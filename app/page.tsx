@@ -16,7 +16,7 @@ export default function Home() {
 
     // Make API request to backend for prediction
     try {
-      const response = await fetch("https://oc-predictor.vercel.app/api/python", {
+      const response = await fetch("https://oc-predictor.vercel.app/api/index", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
