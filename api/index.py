@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from xgboost import XGBClassifier
 
 app = Flask(__name__)
-CORS(app, origins=['http://localhost:3000'])
+CORS(app, origins=['http://localhost:3000', 'https://oc-predictor.vercel.app/'])
 
 
 cancer_data = pd.read_csv('ovarian.csv')
@@ -96,4 +96,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8080)
+    app.run()
