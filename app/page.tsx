@@ -1,24 +1,11 @@
 'use client'
-import { data } from 'autoprefixer'
-import { Inter } from 'next/font/google'
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 
-const inter = Inter({ subsets: ['latin'] })
+
 
 export default function Home() {
 
-  const [message, setMessage] = useState("Loading")
 
-  // useEffect(() => {
-  //   fetch("http://127.0.0.1:8080/api/python").then(
-  //     response => response.json()
-  //   ).then(
-  //     data => {
-  //       // console.log(data);
-  //       setMessage(data.result)
-  //     }
-  //   )
-  // }, [])
   const [formData, setFormData] = useState({});
   const [predictionResult, setPredictionResult] = useState(null);
 
@@ -64,7 +51,7 @@ export default function Home() {
     'LYM%']
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+      className={`flex min-h-screen flex-col items-center justify-between p-24`}
     >
 
       <h1>Prediction of Ovarian Cancer</h1>
