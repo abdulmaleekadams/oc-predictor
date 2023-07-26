@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-top: 50px;
+}
+label{
+  display: block;
+  gap: 10px 30px;
+  justify-content: center;
+  font-weight: bold;
+}
+
+input{
+  color: black;
+  padding: 15px 15px;
+}
+
+
+label p{
+  width: 40%;
+}
+
+.heading {
+  gap: 10px 30px;
+  justify-content: center;
+  width: 100%;
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.heading p:first-child{
+  width: 40%;
+  color: red;
+}
+
+.button{
+  background-color: rgb(7, 71, 7);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 20px;
+  color: white;
+  text-transform: uppercase;
+  box-shadow: 0px 2px 4px rgba(7, 71, 7, 0.9);
+}
+
+.button:hover{
+  background-color: rgba(7, 71, 7, 0.9);
+}
