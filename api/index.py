@@ -68,7 +68,7 @@ xgb_model = XGBClassifier()
 xgb_model.fit(X_train, y_train)
 
 
-@app.route("/api/python", methods=['POST'])
+@app.route("/api/index", methods=['POST'])
 def hello_world():
     data = request.json
     
