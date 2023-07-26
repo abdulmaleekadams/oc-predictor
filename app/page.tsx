@@ -20,7 +20,6 @@ export default function Home() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://oc-predictor.vercel.app/'
         },
         body: JSON.stringify(formData),
       });
