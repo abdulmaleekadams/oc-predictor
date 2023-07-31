@@ -15,8 +15,11 @@ export default function Home() {
     // Perform validation on form inputs
 
     // Make API request to backend for prediction
+    const URL = process.env.NEXT_PUBLIC_VERCEL_URL
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
+  : "http://localhost:3000/api";
     try {
-      const response = await fetch("/api/index", {
+      const response = await fetch(URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

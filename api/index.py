@@ -67,9 +67,6 @@ xgb_model = XGBClassifier()
 # training the model on the train dataset
 xgb_model.fit(X_train, y_train)
 
-@app.route("/")
-def home():
-    return "Hi"
 
 @app.route("/api/index", methods=['POST'])
 def hello_world():
