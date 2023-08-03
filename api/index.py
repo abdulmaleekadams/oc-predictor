@@ -8,7 +8,8 @@ from sklearn.model_selection import train_test_split
 from xgboost import XGBClassifier
 
 app = Flask(__name__)
-CORS(app, origins=['http://localhost:3000', 'https://oc-predictor.vercel.app/'])
+CORS(app, origins=['http://localhost:3000',
+     'https://oc-predictor.vercel.app/'])
 
 
 cancer_data = pd.read_csv('ovarian.csv')
@@ -71,7 +72,7 @@ xgb_model.fit(X_train, y_train)
 @app.route("/api/index", methods=['POST'])
 def hello_world():
     data = request.json
-    
+
     age = float(data['age'])
     cea = float(data['cea'])
     ibil = float(data['ibil'])
@@ -84,15 +85,15 @@ def hello_world():
     lym = float(data['lym%'])
 
     # Create a new DataFrame with user input
-    user_data = pd.DataFrame([[age, cea, ibil, neu, menopause, ca125, alb, he4, glo, lym]], columns=['Age', 'CEA', 'IBIL', 'NEU','Menopause','CA125','ALB','HE4','GLO','LYM%']) 
+    user_data = pd.DataFrame([[age, cea, ibil, neu, menopause, ca125, alb, he4, glo, lym]], columns=[
+                             'Age', 'CEA', 'IBIL', 'NEU', 'Menopause', 'CA125', 'ALB', 'HE4', 'GLO', 'LYM%'])
     predictions = xgb_model.predict(user_data)
 
     # Interpret the predictions
     if predictions == 1:
-        return jsonify({'result':"The model predicts the absence of cancer."})
+        return jsonify({'result': "The model predicts the absence of cancer."})
     else:
-        return jsonify({'result':"The model predicts the presence of cancer."})
-    
+        return jsonify({'result': "The model predicts the presence of cancer."})
 
 
 if __name__ == '__main__':

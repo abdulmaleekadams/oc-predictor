@@ -1,11 +1,7 @@
-'use client'
-import { ChangeEvent, FormEvent, useState } from 'react'
-
-
+'use client';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
 export default function Home() {
-
-
   const [formData, setFormData] = useState({});
   const [predictionResult, setPredictionResult] = useState(null);
 
@@ -16,8 +12,8 @@ export default function Home() {
 
     // Make API request to backend for prediction
     const URL = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
-  : "http://localhost:3000/api";
+      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
+      : 'http://localhost:3000/api';
     try {
       const response = await fetch(URL, {
         method: 'POST',
@@ -42,7 +38,8 @@ export default function Home() {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const features = ['Age',
+  const features = [
+    'Age',
     'CEA',
     'IBIL',
     'NEU',
@@ -51,12 +48,12 @@ export default function Home() {
     'ALB',
     'HE4',
     'GLO',
-    'LYM%']
+    'LYM%',
+  ];
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24`}
     >
-
       <h1>Prediction of Ovarian Cancer</h1>
 
       <form onSubmit={handleSubmit}>
@@ -67,20 +64,27 @@ export default function Home() {
         {features.map((feature, index) => (
           <label key={index} className='flex'>
             <p>{feature}</p>
-            <input type="number" step={0.01} min={0} name={feature.toLowerCase()} onChange={handleChange} />
+            <input
+              type='number'
+              step={0.01}
+              min={0}
+              name={feature.toLowerCase()}
+              onChange={handleChange}
+            />
           </label>
         ))}
 
         {/* Add more input fields for other features */}
-        <button type="submit" className='button'>Predict</button>
+        <button type='submit' className='button'>
+          Predict
+        </button>
       </form>
       {predictionResult && (
         <div>
           <h2>Prediction Result:</h2>
-          <p>{predictionResult ? predictionResult : "loading"}</p>
+          <p>{predictionResult ? predictionResult : 'loading'}</p>
         </div>
       )}
-
     </main>
-  )
+  );
 }
