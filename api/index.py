@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import pandas as pd
-import numpy as np
 from sklearn.model_selection import train_test_split
 
 # importing machine learning models for prediction
