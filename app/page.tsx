@@ -15,7 +15,7 @@ export default function Home() {
       ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
       : 'http://localhost:3000/api';
     try {
-      const response = await fetch(URL, {
+      const response = await fetch(`${URL}/index`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
