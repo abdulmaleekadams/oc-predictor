@@ -13,11 +13,9 @@ export default function Home() {
     // Perform validation on form inputs
 
     // Make API request to backend for prediction
-    const URL = process.env.NEXT_PUBLIC_VERCEL_URL
-      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
-      : 'http://127.0.0.1:5000/api' ;
+    const URL = 'https://oc-predictor.onrender.com' ;
     try {
-      const response = await fetch(`${URL}/index`, {
+      const response = await fetch(`${URL}/api/index`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
