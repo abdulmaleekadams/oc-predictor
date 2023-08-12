@@ -11,7 +11,7 @@ CORS(app, origins=['http://localhost:3000',
      'https://oc-predictor.vercel.app/'])
 
 
-cancer_data = pd.read_csv('ovarian.csv')
+cancer_data = pd.read_csv('api\ovarian.csv')
 cancer_data = cancer_data.apply(
     lambda x: x.str.rstrip() if x.dtype == "object" else x)
 cancer_data.replace({'AFP': {'>1210.00': '1210.00', '>1210': '1210.00'},
@@ -93,6 +93,7 @@ def hello_world():
         return jsonify({'result': "The model predicts the absence of cancer."})
     else:
         return jsonify({'result': "The model predicts the presence of cancer."})
+
 
 
 if __name__ == '__main__':

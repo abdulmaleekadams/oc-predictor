@@ -1,19 +1,21 @@
-'use client';
+'use client'
 import { ChangeEvent, FormEvent, useState } from 'react';
 
 export default function Home() {
   const [formData, setFormData] = useState({});
   const [predictionResult, setPredictionResult] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); // Add isLoading state
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true); // Set isLoading to true when form is submitted
 
     // Perform validation on form inputs
 
     // Make API request to backend for prediction
     const URL = process.env.NEXT_PUBLIC_VERCEL_URL
       ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
-      : 'http://localhost:3000/api';
+      : 'http://127.0.0.1:5000/api' ;
     try {
       const response = await fetch(`${URL}/index`, {
         method: 'POST',
@@ -30,6 +32,8 @@ export default function Home() {
     } catch (error) {
       console.error('Prediction error:', error);
       // Handle error condition
+    } finally {
+      setIsLoading(false); // Set isLoading to false after the API request is complete
     }
   };
 
@@ -50,10 +54,9 @@ export default function Home() {
     'GLO',
     'LYM%',
   ];
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24`}
-    >
+    <main className={`flex min-h-screen flex-col items-center justify-between p-24`}>
       <h1>Prediction of Ovarian Cancer</h1>
 
       <form onSubmit={handleSubmit}>
@@ -75,8 +78,8 @@ export default function Home() {
         ))}
 
         {/* Add more input fields for other features */}
-        <button type='submit' className='button'>
-          Predict
+        <button type='submit' className='button' disabled={isLoading}> {/* Disable the button when isLoading is true */}
+          {isLoading ? 'Predicting...' : 'Predict'} {/* Change button text based on isLoading */}
         </button>
       </form>
       {predictionResult && (
